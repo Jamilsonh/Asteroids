@@ -18,17 +18,12 @@ Pretendo disponibilizar o jogo gratuitamente no [Itch.io](https://itch.io) assim
 
 ## Estado Atual
 
-O projeto está em desenvolvimento ativo. Algumas mecânicas principais já foram implementadas:
+ROADMAP do projeto:
 
-- [x] Movimento da nave com física básica
-- [x] Asteroides com colisão e destruição
-- [x] Pontuação baseada em destruição de asteroides
-- [x] Sistema de dano e vida do jogador
-
----
-
-## Próximas Atualizações
-
+- [x] ~~**Movimento da nave com física básica**~~ 
+- [x] ~~**Asteroides com colisão e destruição**~~
+- [x] ~~**Pontuação baseada em destruição de asteroides**~~
+- [x] ~~**Sistema de dano e vida do jogador**~~
 - [ ] Adicionar mapa com movimentação contínua (wrap-around)
 - [ ] Adicionar tela inicial e tela de game over
 - [ ] Melhorar o sistema de destruição e comportamento dos asteroides
