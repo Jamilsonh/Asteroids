@@ -33,7 +33,7 @@ ROADMAP do projeto:
 - 🔴 Incluir itens de power-up temporário
 - 🔴 Exibir pontuação final ao terminar a partida
 - 🔴 Melhorar desempenho com sistema de pooling de objetos
-- 🔴 Publicar o jogo no Itch.io com roadmap de desenvolvimento
+- 🔴 Publicar o jogo no Itch.io
 
 ---
 
