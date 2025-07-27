@@ -9,9 +9,9 @@ public class SmallAsteroid : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        float randomTorque = Random.Range(-10f, 10f);
-        GetComponent<Rigidbody2D>().AddTorque(randomTorque);
-        Destroy(gameObject, lifeTime);
+        //float randomTorque = Random.Range(-10f, 10f);
+        //GetComponent<Rigidbody2D>().AddTorque(randomTorque);
+        //Destroy(gameObject, lifeTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -33,8 +33,6 @@ public class SmallAsteroid : MonoBehaviour
             ScoreManager.Instance.AddScore(5); // valor maior se quiser recompensar fragmentos
             Destroy(other.gameObject); // Destroi a bala
             Destroy(gameObject);
-        }
-        
-       
+        }     
     }   
 }

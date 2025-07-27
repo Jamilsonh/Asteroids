@@ -9,7 +9,7 @@ public class AsteroidSpawner : MonoBehaviour
     public Transform[] spawnPoints; // 0: Top, 1: Bottom, 2: Left, 3: Right
 
     // Intervalo entre os spawns
-    public float spawnInterval = 2f;
+    public float spawnInterval = 15f;
 
     // Velocidade com que os asteroides se movem
     public float asteroidSpeed = 3f;
