@@ -12,7 +12,7 @@ public class AsteroidSpawner : MonoBehaviour
     public float spawnInterval = 15f;
 
     // Velocidade com que os asteroides se movem
-    public float asteroidSpeed = 3f;
+    public float asteroidSpeed = 2f;
 
     // Temporizador interno
     private float timer;

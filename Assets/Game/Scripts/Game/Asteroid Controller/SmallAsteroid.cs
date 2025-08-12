@@ -31,7 +31,8 @@ public class SmallAsteroid : MonoBehaviour
             }
 
             ScoreManager.Instance.AddScore(5); // valor maior se quiser recompensar fragmentos
-            Destroy(other.gameObject); // Destroi a bala
+            
+            BulletPool.Instance.ReturnToPool(other.gameObject);
             Destroy(gameObject);
         }     
     }   

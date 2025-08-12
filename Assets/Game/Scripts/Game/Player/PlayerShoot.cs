@@ -2,39 +2,36 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    // Shoot
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public float bulletForce = 50f;
+    public Transform firePoint;       // Ponto de onde sai a bala
+    public float bulletForce = 50f;   // Força do tiro
 
-    // Audio
-    public AudioClip[] shootSounds; // array com os sons de tiro
+    public AudioClip[] shootSounds;   // Sons do tiro
     private AudioSource audioSource;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
-        
     }
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // Pega uma bala da pool
+        GameObject bullet = BulletPool.Instance.GetBullet(firePoint.position, firePoint.rotation);
+
+        // Adiciona força à bala
         Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
+        rbBullet.linearVelocity = Vector2.zero; // Garante que começa parado
         rbBullet.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
 
-        // Toca som aleatório
+        // Som do tiro
         if (shootSounds.Length > 0)
         {
             int index = Random.Range(0, shootSounds.Length);

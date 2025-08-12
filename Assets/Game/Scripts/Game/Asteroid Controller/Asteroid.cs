@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
             // Instacia efeito de explosão (opcional)
             if (explosionEffect != null)
             {
-                Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                ExplosionPool.Instance.GetExplosion(transform.position);
             }
 
             if (smallAsteroidPrefab != null) // Verifica se o prefab do asteroide pequeno está atribuído
@@ -58,7 +58,7 @@ public class Asteroid : MonoBehaviour
 
                     ScoreManager.Instance.AddScore(10); // por exemplo
                     // Destroi o asteroide
-                    Destroy(other.gameObject); // Destroi a bala
+                    BulletPool.Instance.ReturnToPool(other.gameObject);
                     Destroy(gameObject);
                     return;
                 }
@@ -112,7 +112,7 @@ public class Asteroid : MonoBehaviour
             ScoreManager.Instance.AddScore(10); // por exemplo
 
             // Destroi o asteroide
-            Destroy(other.gameObject); // Destroi a bala
+            BulletPool.Instance.ReturnToPool(other.gameObject);
             Destroy(gameObject);
         }
     }
@@ -126,7 +126,7 @@ public class Asteroid : MonoBehaviour
         if (rb != null)
         {
             Vector2 direction = Random.insideUnitCircle.normalized;
-            float speed = Random.Range(0.1f, 2f);
+            float speed = Random.Range(0.1f, 1f);
             rb.linearVelocity = direction * speed;
 
             float randomTorque = Random.Range(-30f, 30f);
