@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SmallAsteroid : MonoBehaviour
 {
-    public float lifeTime = 10f;
     public AudioClip[] explosionSounds;
     public GameObject explosionEffect;
 

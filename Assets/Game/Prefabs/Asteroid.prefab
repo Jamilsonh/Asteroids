@@ -104,7 +104,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.05
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59342ca0667dc7a49b49620ad2fac1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
   explosionEffect: {fileID: 5491852150391340812, guid: 813fd15a25a93e74da505fc3e9593fd2, type: 3}
   smallAsteroidPrefab: {fileID: 9103184754308949463, guid: 3fec88be294c73e43b8fcd347b2721ae, type: 3}
   explosionSounds:

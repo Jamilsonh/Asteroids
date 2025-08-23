@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5840184090524264070}
   - component: {fileID: -903159416499930705}
   - component: {fileID: -3123517731685790858}
+  - component: {fileID: 5448523810891699798}
   m_Layer: 0
   m_Name: Small_Asteroid
   m_TagString: Enemy
@@ -103,7 +104,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.05
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -129,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fed82ff5455954eb42dfe445ce10e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
   explosionSounds:
   - {fileID: 8300000, guid: 98a317dd4cedda04894e15aafa7279f8, type: 3}
   - {fileID: 8300000, guid: 9c2d27cd58483b54980d55f4770dc613, type: 3}
@@ -172,3 +172,15 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.13
+--- !u!114 &5448523810891699798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9103184754308949463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2669fe71bc934324793cf30f52bfb0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

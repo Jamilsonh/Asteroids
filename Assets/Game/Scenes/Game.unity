@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 140943310}
-  - component: {fileID: 140943309}
+  - component: {fileID: 140943311}
   m_Layer: 0
   m_Name: Asteroid Spawner
   m_TagString: Untagged
@@ -136,26 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &140943309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140943308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b85ff57fbf2df184c9282abd8d3ea2b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asteroidPrefab: {fileID: 3834260860842586004, guid: c8cd2aec4e5929c44879c2600dbc392f, type: 3}
-  spawnPoints:
-  - {fileID: 1320539989}
-  - {fileID: 1913765414}
-  - {fileID: 295560350}
-  - {fileID: 541377751}
-  spawnInterval: 2
-  asteroidSpeed: 1.5
 --- !u!4 &140943310
 Transform:
   m_ObjectHideFlags: 0
@@ -175,6 +155,24 @@ Transform:
   - {fileID: 541377751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &140943311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140943308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64349b09a61e531408959e7781cf28cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefab: {fileID: 3834260860842586004, guid: c8cd2aec4e5929c44879c2600dbc392f, type: 3}
+  spawnPoints:
+  - {fileID: 1320539989}
+  - {fileID: 1913765414}
+  - {fileID: 295560350}
+  - {fileID: 541377751}
 --- !u!1 &237575938
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +249,63 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 140943310}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &416223216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 416223218}
+  - component: {fileID: 416223217}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &416223217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416223216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c9285fa79a8e54a8728b288a6eed0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: 62bbce8a9a9817242829b4bff22e1588, type: 2}
+  - {fileID: 11400000, guid: 2a51b0bb85238dd4bb59ece82b1ccbbd, type: 2}
+  - {fileID: 11400000, guid: 2f1fbbc495e8f1e4d87221b2bf88bfdd, type: 2}
+  - {fileID: 11400000, guid: b2462934ffe28e84182223c7f13e3f41, type: 2}
+  - {fileID: 11400000, guid: 1252c481956888140a8e9f1a41491764, type: 2}
+  - {fileID: 11400000, guid: 5ee6f49a83959a14bb866b963f31ab21, type: 2}
+  - {fileID: 11400000, guid: 3a220b756561f294bb7eb3a8c22203ce, type: 2}
+  - {fileID: 11400000, guid: 14e5dc4d58450f747b5509d1aef951b3, type: 2}
+  - {fileID: 11400000, guid: 874f1c2405f27eb47ac86f0029c1b7df, type: 2}
+  - {fileID: 11400000, guid: ddd44f146b847aa4da9d2ed8d866b20c, type: 2}
+  spawner: {fileID: 140943311}
+  timeBetweenWaves: 10
+--- !u!4 &416223218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416223216}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 482.1184, y: 454.20172, z: -6.5596013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &421281561
 GameObject:
@@ -1169,7 +1224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 150
-  thrustForce: 5
+  thrustForce: 10
+  maxSpeed: 10
 --- !u!50 &1393092728
 Rigidbody2D:
   serializedVersion: 5
@@ -1184,7 +1240,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0.25
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -2100,3 +2156,4 @@ SceneRoots:
   - {fileID: 1602916042}
   - {fileID: 1779772631}
   - {fileID: 1910633174}
+  - {fileID: 416223218}

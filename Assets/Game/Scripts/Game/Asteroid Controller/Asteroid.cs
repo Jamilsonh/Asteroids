@@ -3,14 +3,20 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     // Tempo de vida do asteroide antes de ser destruído automaticamente
-    public float lifeTime = 10f;
     public GameObject explosionEffect; // Prefab de explosão opcional
     public GameObject smallAsteroidPrefab;
 
     public AudioClip[] explosionSounds;
 
+    private WaveData waveData;
+
     float minScaleForThreeFragments = 1.3f;
     float BaseScale = 1f;
+
+    public void Setup(WaveData data)
+    {
+        waveData = data;
+    }
 
     void Start()
     {
@@ -19,9 +25,6 @@ public class Asteroid : MonoBehaviour
 
         // Aplica esse torque ao Rigidbody2D para fazer o asteroide girar
         GetComponent<Rigidbody2D>().AddTorque(randomTorque);
-
-        // Destroi automaticamente o objeto após 'lifeTime' segundos
-        Destroy(gameObject, lifeTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -126,14 +129,15 @@ public class Asteroid : MonoBehaviour
         if (rb != null)
         {
             Vector2 direction = Random.insideUnitCircle.normalized;
-            float speed = Random.Range(0.1f, 1f);
+            float speed = Random.Range(waveData.minFragmentSpeed, waveData.maxFragmentSpeed);
+            
             rb.linearVelocity = direction * speed;
 
             float randomTorque = Random.Range(-30f, 30f);
             rb.AddTorque(randomTorque);
-        }
 
-        Destroy(fragment, 10f);
+            fragment.GetComponent<Asteroid>()?.Setup(waveData);
+        }
     }
 }
 
