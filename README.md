@@ -1,4 +1,4 @@
- # Projeto Asteroids (WIP)
+ # Projeto Asteroids
 
 Este é um jogo que estou desenvolvendo inspirado no clássico **Asteroids** do Atari.  
 O objetivo do projeto é praticar minha programação com C# utilizando a engine **Unity**, além de compartilhar o resultado com outras pessoas interessadas.
