@@ -3,10 +3,15 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     public Transform firePoint;       // Ponto de onde sai a bala
-    public float bulletForce = 50f;   // Força do tiro
+    public float bulletForce = 50f;   // Forï¿½a do tiro
 
     public AudioClip[] shootSounds;   // Sons do tiro
     private AudioSource audioSource;
+
+    public float fireRate = 0.2f;
+    private float nextFireTime = 0f; 
+    
+    // Arroz
 
     void Start()
     {
@@ -15,9 +20,10 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && Time.time >= nextFireTime)
         {
             Shoot();
+            nextFireTime = Time.time + fireRate;
         }
     }
 
@@ -26,9 +32,9 @@ public class PlayerShoot : MonoBehaviour
         // Pega uma bala da pool
         GameObject bullet = BulletPool.Instance.GetBullet(firePoint.position, firePoint.rotation);
 
-        // Adiciona força à bala
+        // Adiciona forï¿½a ï¿½ bala
         Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
-        rbBullet.linearVelocity = Vector2.zero; // Garante que começa parado
+        rbBullet.linearVelocity = Vector2.zero; // Garante que comeï¿½a parado
         rbBullet.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
 
         // Som do tiro
@@ -37,5 +43,6 @@ public class PlayerShoot : MonoBehaviour
             int index = Random.Range(0, shootSounds.Length);
             audioSource.PlayOneShot(shootSounds[index]);
         }
+
     }
 }

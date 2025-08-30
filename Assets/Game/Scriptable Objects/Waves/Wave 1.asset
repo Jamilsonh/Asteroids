@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Wave 1
   m_EditorClassIdentifier: 
   asteroidCount: 3
-  spawnInterval: 2
-  minScale: 1
-  maxScale: 1.2
+  spawnInterval: 1
+  minScale: 0.8
+  maxScale: 1
   minSpeed: 0.5
-  maxSpeed: 2
+  maxSpeed: 1
   minFragmentSpeed: 0.5
-  maxFragmentSpeed: 1.5
+  maxFragmentSpeed: 1

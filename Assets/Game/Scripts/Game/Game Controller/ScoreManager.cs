@@ -6,11 +6,12 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     public int score = 0;
-    public TMP_Text scoreText;
+    public TMP_Text scoreLabelText;
+    public TMP_Text scoreValueText;
 
     void Awake()
     {
-        // Garante que só exista uma instância
+        // Garante que sï¿½ exista uma instï¿½ncia
         if (Instance == null)
             Instance = this;
         else
@@ -30,11 +31,14 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateUI()
     {
-        if (scoreText != null)
+        if (scoreLabelText != null)
         {
-            scoreText.text = "SCORE " + score;
+            scoreLabelText.text = "SCORE";
+        }
+
+        if (scoreValueText != null)
+        {
+            scoreValueText.text = score.ToString();
         }
     }
-
-
 }

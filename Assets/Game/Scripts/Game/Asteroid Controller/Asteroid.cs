@@ -112,7 +112,7 @@ public class Asteroid : MonoBehaviour
                 AudioSource.PlayClipAtPoint(clip, transform.position);
             }
 
-            ScoreManager.Instance.AddScore(10); // por exemplo
+            ScoreManager.Instance.AddScore(15); // por exemplo
 
             // Destroi o asteroide
             BulletPool.Instance.ReturnToPool(other.gameObject);

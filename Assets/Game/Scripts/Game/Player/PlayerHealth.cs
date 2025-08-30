@@ -20,12 +20,11 @@ public class PlayerHealth : MonoBehaviour
     private bool isInvulnerable = false;
     private SpriteRenderer spriteRenderer;
 
-    public GameObject gameOverPanel;
-
     public AudioClip[] hitSounds;
     private AudioSource audioSource;
-
     public AudioClip deathSound;
+
+    //public GameObject gameOverPanel;
 
     void Start()
     {
@@ -48,7 +47,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHearts <= 0)
         {
-            GameOver();
+            if (deathSound != null)
+                audioSource.PlayOneShot(deathSound);
+
+            // Notifica que o player morreu
+            GameOverManager.Instance.TriggerGameOver();
             return;
         }
 
@@ -72,20 +75,20 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void GameOver()
-    {
-        if (deathSound != null)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
+    //void GameOver()
+    //{
+    //    if (deathSound != null)
+    //    {
+    //        audioSource.PlayOneShot(deathSound);
+    //    }
 
-        if (gameOverPanel != null)
-        {
-            gameOverPanel.SetActive(true);
-        }
+    //    if (gameOverPanel != null)
+    //    {
+    //        gameOverPanel.SetActive(true);
+    //    }
 
-        Time.timeScale = 0f;
-    }
+    //    Time.timeScale = 0f;
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -98,8 +101,8 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator InvulnerabilityCoroutine()
     {
         isInvulnerable = true;
-
         float elapsed = 0f;
+
         while (elapsed < invulnerabilityDuration)
         {
             spriteRenderer.enabled = !spriteRenderer.enabled; // Pisca
@@ -115,9 +118,9 @@ public class PlayerHealth : MonoBehaviour
         isInvulnerable = false;
     }
 
-    public void RestartGame()
-    {
-        Time.timeScale = 1f; // volta o tempo ao normal
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    //public void RestartGame()
+    //{
+    //    Time.timeScale = 1f; // volta o tempo ao normal
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //}
 }

@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    [Header("Configuração de Waves")]
+    [Header("Configureï¿½ï¿½o de Waves")]
     public WaveData[] waves; // lista de waves (definidas no inspector com ScriptableObjects)
-    public AsteroidSpawnerWaves spawner; // referência ao spawner
+    public AsteroidSpawnerWaves spawner; // referencia ao spawner
     public float timeBetweenWaves = 3f; // tempo de espera entre waves
 
     private int currentWaveIndex = 0;
@@ -30,15 +30,15 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(wave.spawnInterval);
             }
 
-            // Espera até todos os asteroides morrerem
+            // Espera atï¿½ todos os asteroides morrerem
             while (activeAsteroids > 0)
                 yield return null;
 
-            // Contagem regressiva antes da próxima wave
+            // Contagem regressiva antes da prï¿½xima wave
             float countdown = timeBetweenWaves;
             while (countdown > 0)
             {
-                Debug.Log($"Próxima wave em {Mathf.Ceil(countdown)}...");
+                Debug.Log($"Prï¿½xima wave em {Mathf.Ceil(countdown)}...");
                 yield return new WaitForSeconds(1f);
                 countdown -= 1f;
             }
@@ -46,7 +46,7 @@ public class WaveManager : MonoBehaviour
             currentWaveIndex++;
         }
 
-        Debug.Log("Todas as waves foram concluídas!");
+        Debug.Log("Todas as waves foram concluï¿½das!");
     }
 
     // =====================
@@ -60,5 +60,10 @@ public class WaveManager : MonoBehaviour
     public void UnregisterAsteroid()
     {
         activeAsteroids--;
+    }
+
+    public int GetCurrentWave()
+    {
+        return currentWaveIndex + 1;
     }
 }

@@ -2,12 +2,22 @@ using UnityEngine;
 
 public class BulletReturn : MonoBehaviour
 {
-    public float lifeTime = 2f; // Tempo de vida antes de voltar para a pool
+    public float lifeTime = 2f;
     private float timer;
+
+    private static int globalID = 0;  // contador global de balas
+    private int bulletID;
+
+    void Awake()
+    {
+        bulletID = globalID;  // cada bala ganha um ID único
+        globalID++;
+    }
 
     void OnEnable()
     {
-        timer = 0f; // Reinicia o contador sempre que a bala é ativada
+        timer = 0f;
+        Debug.Log("Ativando bala ID: " + bulletID);
     }
 
     void Update()
