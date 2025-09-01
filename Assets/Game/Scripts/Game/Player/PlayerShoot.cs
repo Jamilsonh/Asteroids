@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public Transform firePoint;       // Ponto de onde sai a bala
-    public float bulletForce = 50f;   // For�a do tiro
+    public Transform firePoint; // Ponto de onde sai a bala
+    public float bulletForce = 50f; // For�a do tiro
 
-    public AudioClip[] shootSounds;   // Sons do tiro
+    public AudioClip[] shootSounds; // Sons do tiro
     private AudioSource audioSource;
 
     public float fireRate = 0.2f;
-    private float nextFireTime = 0f; 
-    
+    private float nextFireTime = 0f;
+
     // Arroz
 
     void Start()
@@ -43,6 +43,5 @@ public class PlayerShoot : MonoBehaviour
             int index = Random.Range(0, shootSounds.Length);
             audioSource.PlayOneShot(shootSounds[index]);
         }
-
     }
 }

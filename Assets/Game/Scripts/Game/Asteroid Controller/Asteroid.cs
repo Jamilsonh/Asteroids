@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
-    // Tempo de vida do asteroide antes de ser destruído automaticamente
-    public GameObject explosionEffect; // Prefab de explosão opcional
+    // Tempo de vida do asteroide antes de ser destruï¿½do automaticamente
+    public GameObject explosionEffect; // Prefab de explosï¿½o opcional
     public GameObject smallAsteroidPrefab;
 
     public AudioClip[] explosionSounds;
@@ -20,7 +20,7 @@ public class Asteroid : MonoBehaviour
 
     void Start()
     {
-        // Gera um torque (rotação) aleatório entre -10 e 10
+        // Gera um torque (rotaï¿½ï¿½o) aleatï¿½rio entre -10 e 10
         float randomTorque = Random.Range(-10f, 10f);
 
         // Aplica esse torque ao Rigidbody2D para fazer o asteroide girar
@@ -32,22 +32,22 @@ public class Asteroid : MonoBehaviour
         // Verifica se colidiu com a bala
         if (other.CompareTag("Bullet"))
         {
-            // Instacia efeito de explosão (opcional)
+            // Instacia efeito de explosï¿½o (opcional)
             if (explosionEffect != null)
             {
                 ExplosionPool.Instance.GetExplosion(transform.position);
             }
 
-            if (smallAsteroidPrefab != null) // Verifica se o prefab do asteroide pequeno está atribuído
+            if (smallAsteroidPrefab != null) // Verifica se o prefab do asteroide pequeno estï¿½ atribuï¿½do
             {
-                // Obtém a escala absoluta (em X) do asteroide atual (o que explodiu)
+                // Obtï¿½m a escala absoluta (em X) do asteroide atual (o que explodiu)
                 float parentScale = transform.localScale.x;
 
-                // Fator aleatório para aumentar a escala total dos fragmentos
-                // (2.5 a 2.8 vezes a escala do pai) — escala visual maior
+                // Fator aleatï¿½rio para aumentar a escala total dos fragmentos
+                // (2.5 a 2.8 vezes a escala do pai) ï¿½ escala visual maior
                 float scaleFactor = Random.Range(2.6f, 3f);
 
-                // Calcula a soma total de escala que será dividida entre os fragmentos
+                // Calcula a soma total de escala que serï¿½ dividida entre os fragmentos
                 float totalScale = parentScale * scaleFactor;
 
                 if (parentScale <= BaseScale)
@@ -59,7 +59,8 @@ public class Asteroid : MonoBehaviour
                         AudioSource.PlayClipAtPoint(clip, transform.position);
                     }
 
-                    ScoreManager.Instance.AddScore(10); // por exemplo
+                    ScoreManager.Instance.AddScore(waveData.smallAsteroidScore);
+                    //ScoreManager.Instance.AddScore(10); // por exemplo
                     // Destroi o asteroide
                     BulletPool.Instance.ReturnToPool(other.gameObject);
                     Destroy(gameObject);
@@ -82,17 +83,17 @@ public class Asteroid : MonoBehaviour
                     // Loop para instanciar os dois fragmentos
                     for (int i = 0; i < 3; i++)
                     {
-                        SpawnFragment(transform.position, scales[i]);                    
+                        SpawnFragment(transform.position, scales[i]);
                     }
                 }
 
                 else
                 {
-                    // Gera um valor de proporção entre 30% e 70% para o primeiro fragmento
+                    // Gera um valor de proporï¿½ï¿½o entre 30% e 70% para o primeiro fragmento
                     // O segundo recebe o restante (1 - ratio)
                     float ratio = Random.Range(0.4f, 0.6f);
-                    float scaleA = totalScale * ratio;         // Escala do primeiro fragmento
-                    float scaleB = totalScale * (1f - ratio);  // Escala do segundo fragmento
+                    float scaleA = totalScale * ratio; // Escala do primeiro fragmento
+                    float scaleB = totalScale * (1f - ratio); // Escala do segundo fragmento
 
                     // Armazena os dois valores de escala em um array para facilitar o uso no loop
                     float[] scales = new float[] { scaleA, scaleB };
@@ -101,8 +102,8 @@ public class Asteroid : MonoBehaviour
                     for (int i = 0; i < 2; i++)
                     {
                         SpawnFragment(transform.position, scales[i]);
-                    }     
-                }                   
+                    }
+                }
             }
 
             if (explosionSounds.Length > 0)
@@ -112,7 +113,8 @@ public class Asteroid : MonoBehaviour
                 AudioSource.PlayClipAtPoint(clip, transform.position);
             }
 
-            ScoreManager.Instance.AddScore(15); // por exemplo
+            ScoreManager.Instance.AddScore(waveData.bigAsteroidScore);
+            //ScoreManager.Instance.AddScore(15); // por exemplo
 
             // Destroi o asteroide
             BulletPool.Instance.ReturnToPool(other.gameObject);
@@ -130,20 +132,20 @@ public class Asteroid : MonoBehaviour
         {
             Vector2 direction = Random.insideUnitCircle.normalized;
             float speed = Random.Range(waveData.minFragmentSpeed, waveData.maxFragmentSpeed);
-            
+
             rb.linearVelocity = direction * speed;
 
             float randomTorque = Random.Range(-30f, 30f);
             rb.AddTorque(randomTorque);
 
             fragment.GetComponent<Asteroid>()?.Setup(waveData);
+            fragment.GetComponent<SmallAsteroid>()?.Setup(waveData);
         }
     }
 }
 
 
-
-// LOGICA DE AUMENTO DE VELOCIDADE DO ASTEROID APOS EXPLODIR BASEADO EM WAVES (IMPLEMENTAÇÃO FUTURA)
+// LOGICA DE AUMENTO DE VELOCIDADE DO ASTEROID APOS EXPLODIR BASEADO EM WAVES (IMPLEMENTAï¿½ï¿½O FUTURA)
 
 //if (rb != null)
 //{
@@ -155,25 +157,25 @@ public class Asteroid : MonoBehaviour
 
 //    if (currentWave < 5)
 //    {
-//        // Estágio 1: fragmentos lentos
+//        // Estï¿½gio 1: fragmentos lentos
 //        speed = Random.Range(0.1f, 0.5f);
 //    }
 //    else if (currentWave < 10)
 //    {
-//        // Estágio 2: velocidade média
+//        // Estï¿½gio 2: velocidade mï¿½dia
 //        speed = Random.Range(0.4f, 1.2f);
 //    }
 //    else
 //    {
-//        // Estágio 3: rápido
+//        // Estï¿½gio 3: rï¿½pido
 //        speed = Random.Range(1.0f, 2.0f);
 //    }
 
 //    rb.linearVelocity = direction * speed;
 
-//    // Torque (rotação aleatoria
+//    // Torque (rotaï¿½ï¿½o aleatoria
 //    float randomTorque = Random.Range(-30f, 30f);
 //    rb.AddTorque(randomTorque);
 //}
 
-// Destrói o fragmento automaticamente após 10 segundos
+// Destrï¿½i o fragmento automaticamente apï¿½s 10 segundos

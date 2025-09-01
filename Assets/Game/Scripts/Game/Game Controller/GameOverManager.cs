@@ -9,7 +9,8 @@ public class GameOverManager : MonoBehaviour
     public GameObject gameOverPanel;
     public TMP_Text finalScoreText;
     public TMP_Text finalWaveText;
-    public TMP_Text scoreTextUI; // referência ao texto de score que aparece durante o jogo
+    public TMP_Text scoreTextUI; // referï¿½ncia ao texto de score que aparece durante o jogo
+    public TMP_Text scoreNumberUI; // referï¿½ncia ao texto de score que aparece durante o jogo
 
     private void Awake()
     {
@@ -29,6 +30,9 @@ public class GameOverManager : MonoBehaviour
         // Desativa o score ativo da tela de jogo
         if (scoreTextUI != null)
             scoreTextUI.gameObject.SetActive(false);
+
+        if (scoreNumberUI != null)
+            scoreNumberUI.gameObject.SetActive(false);
 
         if (finalScoreText != null)
             finalScoreText.text = "SCORE: " + ScoreManager.Instance.score;

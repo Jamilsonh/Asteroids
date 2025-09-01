@@ -5,12 +5,19 @@ public class SmallAsteroid : MonoBehaviour
     public AudioClip[] explosionSounds;
     public GameObject explosionEffect;
 
+    private WaveData waveData;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //float randomTorque = Random.Range(-10f, 10f);
         //GetComponent<Rigidbody2D>().AddTorque(randomTorque);
         //Destroy(gameObject, lifeTime);
+    }
+
+    public void Setup(WaveData data)
+    {
+        waveData = data;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -29,10 +36,18 @@ public class SmallAsteroid : MonoBehaviour
                 AudioSource.PlayClipAtPoint(clip, transform.position);
             }
 
-            ScoreManager.Instance.AddScore(5); // valor maior se quiser recompensar fragmentos
-            
+            // usa o valor do ScriptableObject
+            if (waveData != null)
+            {
+                ScoreManager.Instance.AddScore(waveData.fragmentAsteroidScore);
+            }
+            else
+            {
+                Debug.LogWarning("WaveData não configurado no SmallAsteroid!");
+            }
+
             BulletPool.Instance.ReturnToPool(other.gameObject);
             Destroy(gameObject);
-        }     
-    }   
+        }
+    }
 }

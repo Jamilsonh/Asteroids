@@ -20,3 +20,6 @@ MonoBehaviour:
   maxSpeed: 1
   minFragmentSpeed: 0.5
   maxFragmentSpeed: 1
+  bigAsteroidScore: 10
+  smallAsteroidScore: 20
+  fragmentAsteroidScore: 5

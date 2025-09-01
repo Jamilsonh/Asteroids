@@ -4,7 +4,7 @@ using UnityEngine;
 public class WaveData : ScriptableObject
 {
     [Header("Quantidade de Asteroides")]
-    public int asteroidCount = 5; // Quantos asteroides essa wave ter� 
+    public int asteroidCount = 5; // Quantos asteroides essa wave ter� 
 
     [Header("Tempo entre spawns")]
     public float spawnInterval = 1f; // Intervalo entre cada asteroide dentro da wave
@@ -20,4 +20,9 @@ public class WaveData : ScriptableObject
     [Header("Velocidade dos Fragmentos (Asteroides Pequenos)")]
     public float minFragmentSpeed = 0.5f;
     public float maxFragmentSpeed = 1.5f;
+
+    [Header("Pontuação")]
+    public int bigAsteroidScore = 10;
+    public int smallAsteroidScore = 15;
+    public int fragmentAsteroidScore = 5;
 }

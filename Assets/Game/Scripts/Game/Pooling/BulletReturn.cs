@@ -5,12 +5,12 @@ public class BulletReturn : MonoBehaviour
     public float lifeTime = 2f;
     private float timer;
 
-    private static int globalID = 0;  // contador global de balas
+    private static int globalID = 0; // contador global de balas
     private int bulletID;
 
     void Awake()
     {
-        bulletID = globalID;  // cada bala ganha um ID único
+        bulletID = globalID; // cada bala ganha um ID ï¿½nico
         globalID++;
     }
 
@@ -37,5 +37,4 @@ public class BulletReturn : MonoBehaviour
             BulletPool.Instance.ReturnToPool(gameObject);
         }
     }
-
 }

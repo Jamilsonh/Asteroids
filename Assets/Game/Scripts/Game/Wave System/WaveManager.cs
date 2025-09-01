@@ -5,6 +5,7 @@ public class WaveManager : MonoBehaviour
 {
     [Header("Configure��o de Waves")]
     public WaveData[] waves; // lista de waves (definidas no inspector com ScriptableObjects)
+
     public AsteroidSpawnerWaves spawner; // referencia ao spawner
     public float timeBetweenWaves = 3f; // tempo de espera entre waves
 

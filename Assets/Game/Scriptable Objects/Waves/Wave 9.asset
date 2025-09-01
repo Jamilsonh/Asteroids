@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111d5878c04c8b043a257a086fdf2bb8, type: 3}
   m_Name: Wave 9
   m_EditorClassIdentifier: 
-  asteroidCount: 5
-  spawnInterval: 1
-  minScale: 0.8
-  maxScale: 1.5
-  minSpeed: 2
-  maxSpeed: 4
-  minFragmentSpeed: 0.5
-  maxFragmentSpeed: 1.5
+  asteroidCount: 40
+  spawnInterval: 5
+  minScale: 2.7
+  maxScale: 3.5
+  minSpeed: 2.3
+  maxSpeed: 3
+  minFragmentSpeed: 2.3
+  maxFragmentSpeed: 3
+  bigAsteroidScore: 50
+  smallAsteroidScore: 100
+  fragmentAsteroidScore: 35
